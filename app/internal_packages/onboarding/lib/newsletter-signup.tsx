@@ -53,56 +53,16 @@ export default class NewsletterSignup extends React.Component<
   }
 
   _onGetStatus = async (props = this.props) => {
-    this._setState({ status: 'Pending' });
-    try {
-      const { status } = await MailspringAPIRequest.makeRequest({
-        server: 'identity',
-        method: 'GET',
-        path: this._path(props),
-      });
-      if (status === 'Never Subscribed') {
-        this._onSubscribe();
-      } else {
-        this._setState({ status });
-      }
-    } catch (err) {
-      this._setState({ status: 'Error' });
-    }
+    this._setState({ status: 'Unsubscribed' });
   };
 
   _onSubscribe = async () => {
-    this._setState({ status: 'Pending' });
-    try {
-      const { status } = await MailspringAPIRequest.makeRequest({
-        server: 'identity',
-        method: 'POST',
-        path: this._path(),
-      });
-      this._setState({ status });
-    } catch (err) {
-      this._setState({ status: 'Error' });
-    }
+    this._setState({ status: 'Subscribed' });
   };
 
   _onUnsubscribe = async () => {
-    this._setState({ status: 'Pending' });
-    try {
-      const { status } = await MailspringAPIRequest.makeRequest({
-        server: 'identity',
-        method: 'DELETE',
-        path: this._path(),
-      });
-      this._setState({ status });
-    } catch (err) {
-      this._setState({ status: 'Error' });
-    }
+    this._setState({ status: 'Unsubscribed' });
   };
-
-  _path(props = this.props) {
-    return `/api/newsletter/first-account/${encodeURIComponent(
-      props.emailAddress
-    )}?name=${encodeURIComponent(props.name)}`;
-  }
 
   _renderControl() {
     if (this.state.status === 'Pending') {
@@ -146,10 +106,10 @@ export default class NewsletterSignup extends React.Component<
   render() {
     return (
       <Flexbox direction="row" height="auto" style={{ textAlign: 'left' }}>
-        <div style={{ minWidth: 15 }}>{this._renderControl()}</div>
+        {/* <div style={{ minWidth: 15 }}>{this._renderControl()}</div>
         <label htmlFor="subscribe-check" style={{ paddingLeft: 4, flex: 1 }}>
           {localized('Notify me about new features and plugins via this email address.')}
-        </label>
+        </label> */}
       </Flexbox>
     );
   }

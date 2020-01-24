@@ -40,6 +40,7 @@ export function rootURLForServer(server) {
   }
 
   if (server === 'identity') {
+    return 'http://localhost:5101';
     return {
       development: 'http://localhost:5101',
       staging: 'https://id-staging.getmailspring.com',
@@ -50,82 +51,15 @@ export function rootURLForServer(server) {
 }
 
 export async function postStaticAsset({ filename, blob }) {
-  const body = new FormData();
-  body.set('filename', filename);
-  if (typeof blob === 'string') {
-    body.set('file', new Blob([blob], { type: 'text/plain' }), filename);
-  } else {
-    body.set('file', blob, filename);
-  }
-  let resp = await makeRequest({
-    server: 'identity',
-    method: 'POST',
-    path: `/api/save-public-asset`,
-    body: body,
-  });
-  return resp.link;
+  throw new Error('not supported');
 }
 
 export async function postStaticPage({ html, key }) {
-  const json = await makeRequest({
-    server: 'identity',
-    method: 'POST',
-    path: '/api/share-static-page',
-    json: true,
-    body: { key, html },
-    timeout: 1500,
-  });
-  return json.link;
+  throw new Error('not supported');
 }
 
 export async function makeRequest(options) {
-  // for some reason when `fetch` completes, the stack trace has been lost.
-  // In case the request failsm capture the stack now.
-  const root = rootURLForServer(options.server);
-
-  options.headers = options.headers || new Headers();
-  options.headers.set('Accept', 'application/json');
-  options.credentials = 'include';
-
-  if (!options.auth && options.auth !== false) {
-    if (options.server === 'identity') {
-      IdentityStore = IdentityStore || require('./stores/identity-store').IdentityStore;
-      const username = IdentityStore.identity().token;
-      options.headers.set('Authorization', `Basic ${btoa(`${username}:`)}`);
-    }
-  }
-
-  if (options.path) {
-    options.url = `${root}${options.path}`;
-  }
-
-  if (options.body && !(options.body instanceof FormData)) {
-    options.headers.set('Content-Type', 'application/json');
-    options.body = JSON.stringify(options.body);
-  }
-
-  const desc = `${options.method || 'GET'} ${options.url}`;
-  const error = new APIError(`${desc} failed`);
-  let resp = null;
-  try {
-    resp = await fetch(options.url, options);
-  } catch (uselessFetchError) {
-    // TypeError: Failed to fetch when user is offline, with no stack trace.
-    throw error;
-  }
-  if (!resp.ok) {
-    error.statusCode = resp.status;
-    error.message = `${desc} returned ${resp.status} ${resp.statusText}`;
-    throw error;
-  }
-  try {
-    return resp.json();
-  } catch (invalidJSONError) {
-    // We need to wrap this generic JSON error into our APIError class to attach the request
-    // description and also to prevent it from being reported to Sentry 7,000 times a month.
-    error.message = `${desc} returned invalid JSON: ${invalidJSONError.toString()}`;
-    throw error;
-  }
+  throw new Error('not supported');
 }
 
 export default {

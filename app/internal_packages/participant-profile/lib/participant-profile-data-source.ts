@@ -1,5 +1,4 @@
 import { MailspringAPIRequest, Utils } from 'mailspring-exports';
-const { makeRequest } = MailspringAPIRequest;
 
 const CACHE_SIZE = 200;
 const CACHE_INDEX_KEY = 'pp-cache-v3-keys';
@@ -30,16 +29,8 @@ class ParticipantProfileDataSource {
 
     let body = null;
 
-    try {
-      body = await makeRequest({
-        server: 'identity',
-        method: 'GET',
-        path: `/api/info-for-email-v2/${email}?phrase=${encodeURIComponent(name)}`,
-      });
-    } catch (err) {
-      // we don't care about errors
-      return {};
-    }
+    // not supported
+    return {};
 
     if (!body.person) {
       body.person = { email };

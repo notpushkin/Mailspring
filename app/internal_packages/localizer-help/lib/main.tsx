@@ -22,30 +22,7 @@ class SubmitLocalizationsBar extends React.Component {
   }
 
   onSubmit = async () => {
-    const { current, suggestion } = this.state;
-
-    try {
-      const { status } = await MailspringAPIRequest.makeRequest({
-        server: 'identity',
-        method: 'POST',
-        body: { current, suggestion, language: window.navigator.language },
-        path: '/api/localization-suggestion',
-        json: true,
-      });
-      if (status === 'success') {
-        remote.dialog.showMessageBox({
-          type: 'info',
-          buttons: [localized('OK')],
-          message: localized('Thank you!'),
-          title: localized('Thank you!'),
-          detail: localized(
-            `Your updated localization will be reviewed and included in a future version of Mailspring.`
-          ),
-        });
-      }
-    } catch (err) {
-      AppEnv.showErrorDialog(err.toString());
-    }
+    AppEnv.showErrorDialog("Localization suggestions aren't supported in this build!");
   };
 
   onSelectionBogusClick = event => {

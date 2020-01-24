@@ -59,39 +59,12 @@ export default class ShareButton extends React.Component<{}, { link: string; loa
     this._mounted = false;
   }
 
-  _onShareReport = async () => {
-    this.setState({
-      loading: true,
-    });
-
-    const link = await MailspringAPIRequest.postStaticPage({
-      key: `activity-${Date.now()}`,
-      html: buildShareHTML(
-        document.querySelector('style[source-path*="activity/styles/index.less"]'),
-        document.querySelector('.activity-dashboard')
-      ),
-    });
-    if (!this._mounted) {
-      return;
-    }
-    this.setState(
-      {
-        loading: false,
-        link: link,
-      },
-      () => {
-        if (this._linkEl) {
-          this._linkEl.setSelectionRange(0, this._linkEl.value.length);
-          this._linkEl.focus();
-        }
-      }
-    );
-  };
+  _onShareReport = async () => {};
 
   render() {
     return (
       <div style={{ display: 'flex' }}>
-        <div className="btn" onClick={this._onShareReport} style={{ minWidth: 150 }}>
+        {/* <div className="btn" onClick={this._onShareReport} style={{ minWidth: 150 }}>
           {localized('Share this Report')}
           {this.state.loading && (
             <RetinaImg
@@ -114,7 +87,7 @@ export default class ShareButton extends React.Component<{}, { link: string; loa
               <RetinaImg name="icon-copytoclipboard.png" mode={RetinaImg.Mode.ContentIsMask} />
             </div>
           </div>
-        )}
+        )} */}
       </div>
     );
   }

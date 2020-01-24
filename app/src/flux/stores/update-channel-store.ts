@@ -1,6 +1,5 @@
 import MailspringStore from 'mailspring-store';
 import { remote } from 'electron';
-import { makeRequest } from '../mailspring-api-request';
 
 const autoUpdater = remote.getGlobal('application').autoUpdateManager;
 const preferredChannel = autoUpdater.preferredChannel;
@@ -31,15 +30,8 @@ class UpdateChannelStore extends MailspringStore {
   async refreshChannel() {
     // TODO BG
     try {
-      const { current, available } = await makeRequest({
-        server: 'identity',
-        method: 'GET',
-        path: `/api/update-channel`,
-        qs: Object.assign({ preferredChannel: preferredChannel }, autoUpdater.parameters()),
-        json: true,
-      });
-      this._current = current || { name: 'Channel API Not Available' };
-      this._available = available || [];
+      this._current = { name: 'Builtin updater disabled in this build' };
+      this._available = [];
       this.trigger();
     } catch (err) {
       // silent
@@ -49,21 +41,8 @@ class UpdateChannelStore extends MailspringStore {
 
   async setChannel(channelName) {
     try {
-      const { current, available } = await makeRequest({
-        server: 'identity',
-        method: 'POST',
-        path: `/api/update-channel`,
-        qs: Object.assign(
-          {
-            channel: channelName,
-            preferredChannel: preferredChannel,
-          },
-          autoUpdater.parameters()
-        ),
-        json: true,
-      });
-      this._current = current || { name: 'Channel API Not Available' };
-      this._available = available || [];
+      this._current = { name: 'Builtin updater disabled in this build' };
+      this._available = [];
       this.trigger();
     } catch (err) {
       AppEnv.showErrorDialog(err.toString());

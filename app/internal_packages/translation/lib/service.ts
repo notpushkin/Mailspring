@@ -235,14 +235,7 @@ export async function translateMessageBody(
 
     let response = null;
     try {
-      response = await MailspringAPIRequest.makeRequest({
-        server: 'identity',
-        method: 'POST',
-        path: `/api/translate`,
-        json: true,
-        body: { lang: targetLang, text: translationHTML, format: 'html' },
-        timeout: 5000,
-      });
+      throw new Error('Not supported in this build :(');
     } catch (error) {
       Actions.closePopover();
       if (!silent) {
