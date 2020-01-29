@@ -52,19 +52,6 @@ matrix:
       osx_image: xcode10.1
       env: CC=clang CXX=clang++ SIGN_BUILD=true
 
-before_install:
-  # Decrypt and uncompress code signing certs, etc.
-  - openssl aes-256-cbc -K $encrypted_faf2708e46e2_key -iv $encrypted_faf2708e46e2_iv
-    -in app/build/resources/certs.tar.enc -out app/build/resources/certs.tar -d;
-  - mkdir app/build/resources/certs;
-  - tar xvf app/build/resources/certs.tar --directory=app/build/resources/;
-  - source app/build/resources/certs/mac/set_unix_env.sh;
-  # Checkout the (currently private) C++ Mailsync codebase
-  - GIT_SSH_COMMAND='ssh -i app/build/resources/certs/mailsync-deploy-key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
-    SSH_ASKPASS=/Users/travis/build/Foundry376/Mailspring/app/build/resources/certs/ssh-askpass-fix
-    DISPLAY=nothing:0
-    git submodule update --init mailsync
-
 before_script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install cmake execstack g++-5 autoconf automake libtool libc-ares-dev libctemplate-dev libcurl4-openssl-dev libicu-dev libxext-dev libsasl2-dev libsasl2-modules libsasl2-modules-gssapi-mit libssl-dev libtidy-dev libxtst-dev libxkbfile-dev libglib2.0-dev libxml2-dev uuid-dev; fi
@@ -73,8 +60,7 @@ before_script:
 script:
   - npm run ci-setup-mac-keychain
   - npm run lint
-  - mailsync/build.sh
-  - mv ./mailsync ./mailsync-src
+  - npm run postinstall
   - DEBUG=electron-packager,electron-osx-sign npm run build
 
 cache:
@@ -84,20 +70,5 @@ cache:
     - /tmp/mailsync-build-deps
     - /var/lib/docker/aufs
 
-after_success:
-  # Grab the version number from the .deb product and update the snapcraft.yml file
-  - sed "s/MAILSPRING_VERSION/$(grep -E -o '([0-9]+.[0-9]+.[0-9]+)' <<< "$(find app/dist -type f -name mailspring-*.deb)")/g" snap/snapcraft.template.yaml > snap/snapcraft.yaml
-  # Decrypt the snapcraft login information
-  - openssl aes-256-cbc -K $encrypted_60f7ef72bfa6_key -iv $encrypted_60f7ef72bfa6_iv
-    -in .snapcraft/travis_snapcraft.cfg -out .snapcraft/snapcraft.cfg -d
-
 services:
   - docker
-
-deploy:
-  "on":
-    branch: master
-    condition: $TRAVIS_OS_NAME = linux
-  provider: script
-  script: docker run -v $(pwd):$(pwd) -t snapcore/snapcraft sh -c "apt update -qq && cd $(pwd) && snapcraft && snapcraft push *.snap --release edge"
-  skip_cleanup: true
