@@ -27,6 +27,7 @@ addons:
       - libxext-dev
       - libxtst-dev
       - libxkbfile-dev
+      - curl
 
 matrix:
   include:
@@ -48,16 +49,8 @@ before_deploy: |
   mkdir -p deploy
   mv app/dist/*.{dmg,zip,deb,rpm} deploy/ || true
 
-deploy:
-  - provider: netlify
-    local_dir: "deploy/"
-    site: "inspiring-volhard-2f86b5"
-
-  - provider: releases
-    api_key: "GITHUB OAUTH TOKEN"
-    file:
-      - deploy/**
-    skip_cleanup: true
-    draft: true
-    "on":
-      tags: true
+after_success: |
+  cd deploy/
+  for f in *; do
+    curl --upload-file "$f" "https://transfer.sh/$f"
+  done
