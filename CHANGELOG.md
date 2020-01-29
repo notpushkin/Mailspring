@@ -1,4 +1,4 @@
-# Mailspring Changelog
+# Mailspring Libre Changelog
 
 ### 1.7.2 (10/22/2019)
 

@@ -1,6 +1,6 @@
 ## Roadmap:
 
-The initial release of Mailspring was in Nov. 2017. The roadmap is largely based on popular GitHub issues plus the larger projects outlined here. For a complete list of features that have been shipped in the app, see the release notes in the changelog.
+The initial fork of Mailspring Libre was in Jan. 2020. The roadmap is largely based on popular GitHub issues plus the larger projects outlined here. For a complete list of features that have been shipped in the app, see the release notes in the changelog.
 
 ### Summer 2019 (Planned)
 

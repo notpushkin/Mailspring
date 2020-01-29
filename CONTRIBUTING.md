@@ -1,22 +1,22 @@
-# Contributing to Mailspring
+# Contributing to Mailspring Libre
 
-Thanks for checking out Mailspring! We'd love for you to contribute. Whether you're a first-time open source contributor or an experienced developer, there are ways you can help make Mailspring great:
+Thanks for checking out Mailspring Libre! We'd love for you to contribute. Whether you're a first-time open source contributor or an experienced developer, there are ways you can help make Mailspring Libre great:
 
-1. Grab an issue tagged with **[Help Wanted](https://github.com/Foundry376/Mailspring/labels/help%20wanted)** and dig in! We try to add context to these issues when adding the label so you know where to get started in the codebase. Be wary of working on issues without the **Help Wanted** label - just because someone has created an issue doesn't mean we'll accept a pull request for it. See [Where to Contribute](#where-to-contribute) below for more information.
+1. Grab an issue tagged with **[Help Wanted](https://github.com/notpushkin/Mailspring-Libre/labels/help%20wanted)** and dig in! We try to add context to these issues when adding the label so you know where to get started in the codebase. Be wary of working on issues without the **Help Wanted** label - just because someone has created an issue doesn't mean we'll accept a pull request for it. See [Where to Contribute](#where-to-contribute) below for more information.
 
 2. Triage issues that haven't been addressed. With a large community of users on many platforms, we have trouble keeping up GitHub issues and moving the project forward at the same time. If you're good at testing and addressing issues, we'd love your help!
 
 ### Filing an Issue
 
-If you have a feature request or bug to report, _please_ search for existing issues **including closed ones!**: https://github.com/Foundry376/Mailspring/issues?utf8=%E2%9C%93&q=is%3Aissue. If someone has already requested the feature you have in mind, upvote it using the "Add Reaction" feature - our team often sorts issues to find the most upvoted ones. For bugs, please verify that you're running the latest version of Mailspring. If you file an issue without providing detail, we may close it without comment.
+If you have a feature request or bug to report, _please_ search for existing issues **including closed ones!**: https://github.com/notpushkin/Mailspring-Libre/issues?utf8=%E2%9C%93&q=is%3Aissue. If someone has already requested the feature you have in mind, upvote it using the "Add Reaction" feature - our team often sorts issues to find the most upvoted ones. For bugs, please verify that you're running the latest version of Mailspring Libre. If you file an issue without providing detail, we may close it without comment.
 
 ### Pull requests
 
-The first time you submit a pull request, a bot will ask you to sign a standard, bare-bones Contributor License Agreement. The CLA states that you waive any patent or copyright claims you might have to the code you're contributing. (e.g.: you can't submit a PR and then sue Mailspring for using your code.)
+The first time you submit a pull request, a bot will ask you to sign a standard, bare-bones Contributor License Agreement. The CLA states that you waive any patent or copyright claims you might have to the code you're contributing. (e.g.: you can't submit a PR and then sue Mailspring Libre for using your code.)
 
 # Build and Run From Source
 
-If you want to understand how Mailspring works or want to debug an issue, you'll want to get the source, build it, and run it locally.
+If you want to understand how Mailspring Libre works or want to debug an issue, you'll want to get the source, build it, and run it locally.
 
 ### Installing Prerequisites
 
@@ -43,8 +43,8 @@ You'll need git and a recent version of Node.JS (any v7.2.1+ is recommended with
 After you have these tools installed, run the following commands to check out Mailspring,install dependencies, and launch the app:
 
 ```
-git clone https://github.com/foundry376/mailspring
-cd mailspring
+git clone https://github.com/notpushkin/Mailspring-Libre
+cd Mailspring-Libre
 npm install
 npm start
 ```
@@ -53,7 +53,7 @@ npm start
 
 #### App Data
 
-When you're running Mailspring with `npm start`, it runs with the `--dev` flag and user data is located in a `Mailspring-dev` folder alongside the regular settings folder:
+When you're running Mailspring Libre with `npm start`, it runs with the `--dev` flag and user data is located in a `Mailspring-dev` folder alongside the regular settings folder:
 
 - Mac: `~/Library/Application Support/Mailspring-dev`
 - Windows: `C:\Users\<you>\AppData\Roaming\Mailspring-dev`
@@ -61,13 +61,13 @@ When you're running Mailspring with `npm start`, it runs with the `--dev` flag a
 
 #### Developer Tools
 
-From Mailspring, you can open the Developer Tools from the menu: `Menu > Developer > Toggle Developer Tools`. Here are a few tips for getting started:
+From Mailspring Libre, you can open the Developer Tools from the menu: `Menu > Developer > Toggle Developer Tools`. Here are a few tips for getting started:
 
 - Errors and warnings will show in the console.
 
 - On the console, `$m` is a shorthand for `mailspring-exports`, and allows you to access global `Stores` and `Model` classes.
 
-- You don't need to stop and restart the development version of Mailspring after each change. You can just reload the window via `CMD+R` (`CTRL+R` on Windows, Linux).
+- You don't need to stop and restart the development version of Mailspring Libre after each change. You can just reload the window via `CMD+R` (`CTRL+R` on Windows, Linux).
 
 #### Linting
 
@@ -75,7 +75,7 @@ We use `prettier` and `eslint` for linting our sources. You can run both of thes
 
 #### Documentation
 
-Back in 2015 and 2016, the Nylas Mail team made a huge effort to document the codebase. The docs are still [available on GitHub pages](https://foundry376.github.io/Mailspring/), and are still largely relevant to Mailspring development.
+Back in 2015 and 2016, the Nylas Mail team made a huge effort to document the codebase. The docs are still [available on GitHub pages](https://foundry376.github.io/Mailspring/), and are still largely relevant to Mailspring Libre development.
 
 #### Discussion Etiquette
 
