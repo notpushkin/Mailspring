@@ -45,11 +45,9 @@ cache:
     - node_modules
     - app/node_modules
 
-before_deploy: |
+after_success: |
   mkdir -p deploy
   mv app/dist/*.{dmg,zip,deb,rpm} deploy/ || true
-
-after_success: |
   cd deploy/
   for f in *; do
     curl --upload-file "$f" "https://transfer.sh/$f"
