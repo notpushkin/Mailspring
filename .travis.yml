@@ -9,16 +9,6 @@ node_js:
   - "11"
 
 addons:
-  artifacts:
-    working_dir: app/dist
-    target_paths: client/${TRAVIS_COMMIT:0:8}/${TRAVIS_OS_NAME}
-    permissions: public-read
-    paths:
-      - mailsync.tar.gz
-      - Mailspring.dmg
-      - Mailspring.zip
-      - $(find . -type f -name mailspring-*.deb | tr "\n" ":")
-      - $(find . -type f -name mailspring-*.rpm | tr "\n" ":")
   apt:
     sources:
       - ubuntu-toolchain-r-test
@@ -40,8 +30,8 @@ addons:
 branches:
   only:
     - master
-    - "/ci-.*/"
-    - "/stable.*/"
+    - '/ci-.*/'
+    - '/stable.*/'
 
 matrix:
   include:
@@ -72,3 +62,21 @@ cache:
 
 services:
   - docker
+
+before_deploy: |
+  mkdir -p deploy
+  mv app/dist/*.{dmg,zip,deb,rpm} deploy/ || true
+
+deploy:
+  - provider: netlify
+    local_dir: "deploy/"
+    site: "inspiring-volhard-2f86b5"
+
+  - provider: releases
+    api_key: "GITHUB OAUTH TOKEN"
+    file:
+      - deploy/**
+    skip_cleanup: true
+    draft: true
+    "on":
+      tags: true
