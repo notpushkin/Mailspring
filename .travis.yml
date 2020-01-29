@@ -10,45 +10,21 @@ node_js:
 
 addons:
   apt:
-    sources:
-      - ubuntu-toolchain-r-test
     packages:
       - build-essential
-      - clang
-      - execstack
-      - fakeroot
-      - g++-4.8
-      - git
-      - libgnome-keyring-dev
-      - libsecret-1-dev
-      - xvfb
-      - rpm
-      - libxext-dev
-      - libxtst-dev
+      - libx11-dev
       - libxkbfile-dev
-
-branches:
-  only:
-    - master
-    - '/ci-.*/'
-    - '/stable.*/'
+      - execstack
+      - libgconf-2-4
+      - libsecret-1-dev
 
 matrix:
   include:
     - os: linux
       env: CC=gcc-4.8 CXX=g++-4.8
       dist: trusty
-    - os: osx
-      osx_image: xcode10.1
-      env: CC=clang CXX=clang++ SIGN_BUILD=true
-
-before_script:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install cmake execstack g++-5 autoconf automake libtool libc-ares-dev libctemplate-dev libcurl4-openssl-dev libicu-dev libxext-dev libsasl2-dev libsasl2-modules libsasl2-modules-gssapi-mit libssl-dev libtidy-dev libxtst-dev libxkbfile-dev libglib2.0-dev libxml2-dev uuid-dev; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export CC=gcc-5 CXX=g++-5; fi
 
 script:
-  - npm run ci-setup-mac-keychain
   - npm run lint
   - npm run postinstall
   - DEBUG=electron-packager,electron-osx-sign npm run build
@@ -57,11 +33,6 @@ cache:
   directories:
     - node_modules
     - app/node_modules
-    - /tmp/mailsync-build-deps
-    - /var/lib/docker/aufs
-
-services:
-  - docker
 
 before_deploy: |
   mkdir -p deploy
