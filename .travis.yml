@@ -45,11 +45,9 @@ cache:
     - node_modules
     - app/node_modules
 
-after_success: |
-  # Download nightly builds here!
-  shopt -s nullglob
-  cd app/dist/
-  for f in *.{dmg,zip,deb,rpm}; do
-    curl --upload-file "$f" "https://transfer.sh/$f"
-    printf "\n"
-  done
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: bash scripts/deploy.sh
+  on:
+    branch: master
