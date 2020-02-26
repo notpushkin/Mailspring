@@ -45,18 +45,16 @@ export default class AutoUpdateManager extends EventEmitter {
       platform: process.platform,
       arch: process.arch,
       version: this.version,
-      id: this.config.get('identity.id') || 'anonymous',
+      id: 'anonymous',
       channel: this.preferredChannel,
     };
 
-    let host = `updates.getmailspring.com`;
+    let host = `msl-updates.ale.sh`;
     if (this.config.get('env') === 'staging') {
-      host = `updates-staging.getmailspring.com`;
+      host = `msl-updates-staging.ale.sh`;
     }
 
-    this.feedURL = `https://${host}/check/${params.platform}/${params.arch}/${params.version}/${
-      params.id
-    }/${params.channel}`;
+    this.feedURL = `https://${host}/check/${params.platform}/${params.arch}/${params.version}/${params.id}/${params.channel}`;
     if (autoUpdater) {
       autoUpdater.setFeedURL(this.feedURL);
     }
@@ -148,7 +146,7 @@ export default class AutoUpdateManager extends EventEmitter {
     };
   }
 
-  check({ hidePopups }: {hidePopups?: boolean} = {}) {
+  check({ hidePopups }: { hidePopups?: boolean } = {}) {
     this.updateFeedURL();
     if (!hidePopups) {
       autoUpdater.once('update-not-available', this.onUpdateNotAvailable);
@@ -162,7 +160,12 @@ export default class AutoUpdateManager extends EventEmitter {
   }
 
   dialogIcon() {
-    const iconPath = path.join(global.application.resourcePath, 'static', 'images', 'mailspring.png');
+    const iconPath = path.join(
+      global.application.resourcePath,
+      'static',
+      'images',
+      'mailspring.png'
+    );
     if (!fs.existsSync(iconPath)) return undefined;
     return nativeImage.createFromPath(iconPath);
   }
