@@ -32,7 +32,9 @@ export default class UnstableChannelNotification extends React.Component<
   }
 
   _onReportIssue = () => {
-    AppEnv.windowEventHandler.openLink({ href: 'mailto:support@getmailspring.com' });
+    AppEnv.windowEventHandler.openLink({
+      href: 'https://github.com/notpushkin/Mailspring-Libre/issues/new',
+    });
   };
 
   render() {

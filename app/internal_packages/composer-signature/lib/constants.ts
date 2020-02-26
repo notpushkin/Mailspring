@@ -105,7 +105,7 @@ export const ResolveSignatureData = data => {
     const domain =
       (data.websiteURL && URL.parse(data.websiteURL).hostname) ||
       (data.email && data.email.split('@').pop());
-    data.photoURL = `https://logo.getmailspring.com/company-logo/${domain}?msw=128&msh=128`;
+    // data.photoURL = `https://logo.getmailspring.com/company-logo/${domain}?msw=128&msh=128`;
   }
 
   if (data.photoURL === 'custom') {
@@ -117,7 +117,6 @@ export const ResolveSignatureData = data => {
       data.instagramURL = `https://www.instagram.com/${data.instagramURL}`;
     }
   }
-
 
   return data;
 };

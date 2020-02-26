@@ -34,18 +34,7 @@ export default class AccountErrorNotification extends React.Component<
   }
 
   _onContactSupport = erroredAccount => {
-    let url = 'https://support.getmailspring.com/hc/en-us/requests/new';
-    if (erroredAccount) {
-      url += `?email=${encodeURIComponent(erroredAccount.emailAddress)}`;
-      const { syncError } = erroredAccount;
-      if (syncError != null) {
-        url += `&subject=${encodeURIComponent('Sync Error')}`;
-        const description = encodeURIComponent(
-          `Sync Error:\n\`\`\`\n${JSON.stringify(syncError, null, 2)}\n\`\`\``
-        );
-        url += `&description=${description}`;
-      }
-    }
+    let url = 'https://github.com/notpushkin/Mailspring-Libre/issues/new';
     shell.openExternal(url);
   };
 
