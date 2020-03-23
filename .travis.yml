@@ -34,6 +34,9 @@ matrix:
     - os: linux
       env: CC=gcc-4.8 CXX=g++-4.8
       dist: trusty
+    - os: osx
+      osx_image: xcode10.1
+      env: CC=clang CXX=clang++ SIGN_BUILD=true
 
 script:
   - npm run lint
