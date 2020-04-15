@@ -2,6 +2,8 @@
 const fs = require('fs');
 const path = require('path');
 const _ = require('underscore');
+const { execSync } = require('child_process');
+const gitTag = execSync('git describe --tags').toString().trim();
 
 module.exports = grunt => {
   const { spawn } = grunt.config('taskHelpers');
@@ -52,6 +54,8 @@ module.exports = grunt => {
       linuxShareDir: '/usr/local/share/mailspring',
       linuxAssetsDir: linuxAssetsDir,
       contentsDir: contentsDir,
+      gitTag: gitTag,
+      arch: arch,
     };
 
     // This populates mailspring.spec
@@ -67,12 +71,12 @@ module.exports = grunt => {
     writeFromTemplate(appdataInFilePath, templateData);
 
     const cmd = path.join(grunt.config('appDir'), 'script', 'mkrpm');
-    const args = [outputDir, contentsDir, linuxAssetsDir];
+    const args = [outputDir, contentsDir, linuxAssetsDir, gitTag, arch];
     spawn({ cmd, args }, error => {
       if (error) {
         return done(error);
       }
-      grunt.log.ok(`Created rpm package in ${rpmDir}`);
+      grunt.log.ok(`Created ${outputDir}/mailspring-${gitTag}-${arch}.rpm`);
       return done();
     });
   });
@@ -101,6 +105,7 @@ module.exports = grunt => {
         section: 'mail',
         maintainer: 'Mailspring Team <support@getmailspring.com>',
         installedSize: installedSize,
+        gitTag: gitTag,
       };
       writeFromTemplate(path.join(linuxAssetsDir, 'debian', 'control.in'), data);
       writeFromTemplate(path.join(linuxAssetsDir, 'mailspring.desktop.in'), data);
@@ -115,12 +120,12 @@ module.exports = grunt => {
         '512.png'
       );
       const cmd = path.join(grunt.config('appDir'), 'script', 'mkdeb');
-      const args = [version, arch, icon, linuxAssetsDir, contentsDir, outputDir];
+      const args = [version, arch, icon, linuxAssetsDir, contentsDir, outputDir, gitTag];
       spawn({ cmd, args }, spawnError => {
         if (spawnError) {
           return done(spawnError);
         }
-        grunt.log.ok(`Created ${outputDir}/mailspring-${version}-${arch}.deb`);
+        grunt.log.ok(`Created ${outputDir}/mailspring-${gitTag}-${arch}.deb`);
         return done();
       });
     });

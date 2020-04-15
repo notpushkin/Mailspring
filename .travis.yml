@@ -1,5 +1,6 @@
 git:
   submodules: false
+  depth: false
 
 language: node_js
 

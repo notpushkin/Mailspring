@@ -13,6 +13,7 @@ ICON_FILE="$3"
 LINUX_ASSETS_DIRECTORY="$4"
 APP_CONTENTS_DIRECTORY="$5"
 OUTPUT_PATH="$6"
+GIT_TAG="$7"
 
 FILE_MODE=755
 
@@ -66,5 +67,5 @@ execstack --clear-execstack "$TARGET/usr/share/mailspring/mailspring"
 find "$TARGET" -type f -name "*.node" -exec chmod a-x {} \;
 
 fakeroot dpkg-deb -b "$TARGET"
-mv "$TARGET_ROOT/mailspring-$VERSION-$ARCH.deb" "$OUTPUT_PATH"
+mv "$TARGET_ROOT/mailspring-$VERSION-$ARCH.deb" "$OUTPUT_PATH/mailspring-$GIT_TAG-$ARCH.deb"
 rm -rf "$TARGET_ROOT"
