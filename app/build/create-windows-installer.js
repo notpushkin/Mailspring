@@ -21,6 +21,7 @@ const config = {
   authors: 'Foundry 376, LLC',
   setupIcon: path.join(appDir, 'build', 'resources', 'win', 'mailspring.ico'),
   setupExe: 'MailspringSetup.exe',
+  setupMsi: 'MailspringSetup.msi',
   exe: 'mailspring.exe',
   name: 'Mailspring',
 };
