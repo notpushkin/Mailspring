@@ -2,7 +2,7 @@
 
 [![Travis Status](https://img.shields.io/travis/com/notpushkin/Mailspring-Libre?label=travis)](https://travis-ci.com/notpushkin/Mailspring-Libre)
 
-Mailspring is a email client that is fast, free and beautiful. This Libre build comes with no telemetry at all, and is still filled with powerful features you will love, like Unified Inbox, Snooze, Send Later, Mail Rules, Templates and more!
+Mailspring is a email client that is fast, free and beautiful. This Libre build comes with no telemetry at all, keeps the [currently closed source.](https://github.com/Foundry376/Mailspring/blob/master/ROADMAP.md#why-is-mailsync-closed-source) binary mailsync engine, and is still filled with powerful features you will love, like Unified Inbox, Snooze, Send Later, Mail Rules, Templates and more!
 
 ![Mailspring Screenshot](https://github.com/Foundry376/Mailspring/raw/master/screenshots/hero_graphic_mac%402x.png)
 
