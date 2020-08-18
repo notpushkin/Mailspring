@@ -17,7 +17,7 @@ const AccountProviders = [
     ),
     icon: 'ic-settings-account-gmail.png',
     headerIcon: 'setup-icon-provider-gmail.png',
-    color: '#e99999',
+    color: '#FFFFFF00',
   },
   {
     provider: 'office365',
