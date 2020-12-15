@@ -73,3 +73,6 @@ client_secret.json
 **.tar.gz
 /app/mailsync.dSYM
 .idea
+
+# TODO
+TODO
