@@ -15,22 +15,19 @@ const config = {
   appDirectory: path.join(appDir, 'dist', 'mailspring-win32-ia32'),
   loadingGif: path.join(appDir, 'build', 'resources', 'win', 'loading.gif'),
   iconUrl: 'http://mailspring-builds.s3.amazonaws.com/assets/mailspring.ico',
-  certificateFile: process.env.WINDOWS_CODESIGN_CERT,
   description: 'Mailspring',
   version: version,
   title: 'Mailspring',
   authors: 'Foundry 376, LLC',
   setupIcon: path.join(appDir, 'build', 'resources', 'win', 'mailspring.ico'),
   setupExe: 'MailspringSetup.exe',
+  setupMsi: 'MailspringSetup.msi',
   exe: 'mailspring.exe',
   name: 'Mailspring',
 };
 
 console.log(config);
 console.log('---> Starting');
-
-// avoid logging the certificate password
-config.certificatePassword = process.env.WINDOWS_CODESIGN_CERT_PASSWORD;
 
 createWindowsInstaller(config)
   .then(() => {
