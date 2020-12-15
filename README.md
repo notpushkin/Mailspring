@@ -1,30 +1,20 @@
-# 💌 Mailspring
+# 💌 Mailspring Libre
 
-[![Travis Status](https://travis-ci.org/Foundry376/Mailspring.svg?branch=master)](https://travis-ci.org/Foundry376/Mailspring)
-[![AppVeyor Status](https://ci.appveyor.com/api/projects/status/iuuuy6d65u3x6bj6?svg=true)](https://ci.appveyor.com/project/Foundry376/Mailspring)
-[![Mailspring Slack](https://join-mailspring-slack.herokuapp.com/badge.svg)](https://join-mailspring-slack.herokuapp.com/)
+[![Travis Status](https://img.shields.io/travis/com/notpushkin/Mailspring-Libre?label=travis)](https://travis-ci.com/notpushkin/Mailspring-Libre)
 
-**Mailspring is a new version of Nylas Mail maintained by one of the original authors. It's faster, leaner, and shipping today!** It replaces the JavaScript sync code in Nylas Mail with a new C++ sync engine based on [Mailcore2](https://github.com/MailCore/mailcore2). It uses roughly half the RAM and CPU of Nylas Mail and idles with almost zero "CPU Wakes", which translates to great battery life. It also has an entirely revamped composer and other great new features.
-
-Mailspring's UI is open source (GPLv3) and written in TypeScript with [Electron](https://github.com/atom/electron) and [React](https://facebook.github.io/react/) - it's built on a plugin architecture and was designed to be easy to extend. Check out [CONTRIBUTING.md](https://github.com/Foundry376/Mailspring/blob/master/CONTRIBUTING.md) to get started!
-
-Mailspring's sync engine is spawned by the Electron application and runs locally on your computer. It will be open-sourced in the future but is [currently closed source.](https://github.com/Foundry376/Mailspring/blob/master/ROADMAP.md#why-is-mailsync-closed-source) When you set up your development environment, Mailspring uses the latest version of the sync process we've shipped for your platform so you don't need to pull sources or install its compile-time dependencies.
+Mailspring is a email client that is fast, free and beautiful. This Libre build comes with no telemetry at all, and is still filled with powerful features you will love, like Unified Inbox, Snooze, Send Later, Mail Rules, Templates and more!
 
 ![Mailspring Screenshot](https://github.com/Foundry376/Mailspring/raw/master/screenshots/hero_graphic_mac%402x.png)
 
-## Features
-
-Mailspring comes packed with powerful features like Unified Inbox, Snooze, Send Later, Mail Rules, Templates and more. Mailspring Pro, which you can unlock with a monthly subscription, adds even more features for people who send a ton of email: link tracking, read receipts, mailbox analytics, contact and company profiles. **All of these features run in the client - Mailspring does not send your email credentials to the cloud.** For a full list of features, check out [getmailspring.com](https://getmailspring.com/).
-
 ## Download Mailspring
 
-You can download compiled versions of Mailspring for Windows, Mac OS X, and Linux (deb, rpm and snap) from [https://getmailspring.com/download](https://getmailspring.com/download).
+N. B. Please note that **Mailspring Libre build isn't fully open source right now**: the sync engine, MailSync, is [proprietary](https://github.com/notpushkin/Mailspring-Libre/blob/master/LICENSE-mailsync.md), and while we're working on replacing it, it probably won't happen anytime soon. By downloading Mailspring Libre build, you accept the MailSync license (which doesn't affect you as a regular user).
+
+You can download compiled versions of Mailspring Libre build for Linux (deb and rpm – Windows and macOS support coming soon!) from [GitHub Releases](https://github.com/notpushkin/Mailspring-Libre/releases/). There's also an [AUR package](https://aur.archlinux.org/packages/mailspring-libre/) maintained by [@Panzki](https://github.com/Panzki) (thanks!). Unstable releases are [available on Travis](https://github.com/notpushkin/Mailspring-Libre/issues/1#issuecomment-581483378).
 
 ## Contributing
 
-Mailspring's UI is entirely open-source and pull requests and contributions are welcome! There are three ways to contribute: building a plugin, building a theme, and submitting pull requests to the project itself. When you're getting started, you may want to join our [public slack](https://join-mailspring-slack.herokuapp.com/) so you can ask questions and learn from other people doing development.
-
-Mailspring's MailSync, however, is closed source. You can read more about the reasons why this is in the [roadmap](https://github.com/Foundry376/Mailspring/blob/master/ROADMAP.md#why-is-mailsync-closed-source).
+Our UI is entirely open-source and pull requests and contributions are welcome! There are a few ways to contribute: building a plugin, building a theme, improving translations, and submitting pull requests to the project itself.
 
 ### Building A Plugin
 
@@ -44,8 +34,8 @@ If you are updating an existing Nylas theme for Mailspring here is a [step by st
 
 ### Localizing / Translating
 
-Mailspring 1.5.0 and above support localization. If you're a fluent speaker of another language, we'd love your help improving translations. Check out the [LOCALIZATION](https://github.com/Foundry376/Mailspring/blob/master/LOCALIZATION.md) guide for more information.
+Mailspring 1.5.0 and above support localization. If you're a fluent speaker of another language, we'd love your help improving translations. Check out the [LOCALIZATION](https://github.com/notpushkin/Mailspring-Libre/blob/master/LOCALIZATION.md) guide for more information.
 
-### Contributing to Mailspring Core
+### Contributing to Mailspring Libre build
 
-Pull requests are always welcome - check out [CONTRIBUTING](https://github.com/Foundry376/Mailspring/blob/master/CONTRIBUTING.md) for more information about setting up the development environment, running tests locally, and submitting pull requests.
+Pull requests are always welcome - check out [CONTRIBUTING](https://github.com/notpushkin/Mailspring-Libre/blob/master/CONTRIBUTING.md) for more information about setting up the development environment, running tests locally, and submitting pull requests.
