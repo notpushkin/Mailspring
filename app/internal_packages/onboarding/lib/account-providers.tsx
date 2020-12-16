@@ -4,6 +4,17 @@ const AccountProviders = [
   {
     provider: 'gmail',
     displayName: 'Gmail or G Suite',
+    note: (
+      <span>
+        <strong>{localized('Important')}:</strong>{' '}
+        {localizedReactFragment(
+          'We recommend that you create a unique app password for email apps like Mailspring. Follow %@ to create one and then paste it below.',
+          <a href="https://support.google.com/accounts/answer/185833?hl=en">
+            {localized('these instructions')}
+          </a>
+        )}
+      </span>
+    ),
     icon: 'ic-settings-account-gmail.png',
     headerIcon: 'setup-icon-provider-gmail.png',
     color: '#e99999',

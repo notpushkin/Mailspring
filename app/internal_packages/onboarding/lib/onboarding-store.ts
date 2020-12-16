@@ -34,7 +34,7 @@ class OnboardingStore extends MailspringStore {
       // to the best page with the most details
       this._account = new Account({}).fromJSON(existingAccountJSON);
       if (this._account.provider === 'gmail') {
-        this._pageStack = ['account-choose', 'account-settings-gmail'];
+        this._pageStack = ['account-choose', 'account-settings'];
       } else if (this._account.provider === 'imap') {
         this._pageStack = ['account-choose', 'account-settings', 'account-settings-imap'];
       } else {
@@ -71,7 +71,7 @@ class OnboardingStore extends MailspringStore {
   };
 
   _onChooseAccountProvider = provider => {
-    const nextPage = provider === 'gmail' ? 'account-settings-gmail' : 'account-settings';
+    const nextPage = 'account-settings';
 
     // Don't carry over any type-specific account information
     this._onSetAccount(
