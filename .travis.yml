@@ -64,5 +64,3 @@ deploy:
   script:
     - language: bash
     - bash scripts/deploy.sh
-  on:
-    branch: libre
