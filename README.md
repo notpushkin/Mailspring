@@ -10,7 +10,7 @@ Mailspring is a email client that is fast, free and beautiful. This Libre build 
 
 N. B. Please note that **Mailspring Libre build isn't fully open source right now**: the sync engine, MailSync, is [proprietary](https://github.com/notpushkin/Mailspring-Libre/blob/master/LICENSE-mailsync.md), and while we're working on replacing it, it probably won't happen anytime soon. By downloading Mailspring Libre build, you accept the MailSync license (which doesn't affect you as a regular user).
 
-You can download compiled versions of Mailspring Libre build for Linux (deb and rpm – Windows and macOS support coming soon!) from [GitHub Releases](https://github.com/notpushkin/Mailspring-Libre/releases/). There's also an [AUR package](https://aur.archlinux.org/packages/mailspring-libre/) maintained by [@Panzki](https://github.com/Panzki) (thanks!). Unstable releases are [available on Travis](https://github.com/notpushkin/Mailspring-Libre/issues/1#issuecomment-581483378).
+You can download compiled versions of Mailspring Libre build for Linux (deb and rpm), macOS (dmg and zip), and Windows (exe and msi) from [GitHub Releases](https://github.com/notpushkin/Mailspring-Libre/releases/). There's also an [AUR package](https://aur.archlinux.org/packages/mailspring-libre/) maintained by [@Panzki](https://github.com/Panzki) (thanks!). Unstable releases are [available on Travis](https://github.com/notpushkin/Mailspring-Libre/issues/1#issuecomment-581483378).
 
 ## Contributing
 
