@@ -12,7 +12,7 @@
     "node": "11.x"
   },
   "devDependencies": {
-    "@types/better-sqlite3": "^5.2.2",
+    "@types/better-sqlite3": "^5.4.1",
     "@types/classnames": "^2.2.7",
     "@types/debug": "^4.1.2",
     "@types/deep-extend": "^0.4.31",
