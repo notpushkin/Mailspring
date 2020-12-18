@@ -61,6 +61,6 @@ cache:
 deploy:
   skip_cleanup: true
   provider: script
-  script:
-    - language: bash
-    - bash scripts/deploy.sh
+  script: bash scripts/deploy.sh
+  on:
+    all_branches: true
