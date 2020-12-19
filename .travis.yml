@@ -48,9 +48,10 @@ jobs:
         - DEBUG=electron-packager,electron-osx-sign npm run build
     - os: windows
       name: Windows Build
+      cache: false
       script:
         - powershell npm config set msvs_version 2015
-        - powershell npm install && powershell npm run build
+        - powershell npm ci && powershell npm run build
         - powershell node app/build/create-windows-installer.js
 
 cache:
