@@ -1,0 +1,31 @@
+version: '{build}'
+
+init:
+- ps: $env:commit = $env:appveyor_repo_commit.SubString(0,8)
+
+install:
+- ps: Install-Product node $env:NODE_VERSION
+- ps: npm config set msvs_version 2015
+
+build_script:
+- cmd: npm install && npm run build
+- cmd: node app/build/create-windows-installer.js
+
+# Stop Appveyor from "Discovering Tests" forever 
+test: off
+
+after_build:
+  - ps: Get-ChildItem .\app\dist\*.tar.gz | % { Push-AppveyorArtifact $_.FullName -FileName "$($_.Name)" }
+  - ps: Get-ChildItem .\app\dist\MailspringSetup.exe | % { Push-AppveyorArtifact $_.FullName -FileName "$($_.Name)" }
+  - ps: Get-ChildItem .\app\dist\*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName "$($_.Name)" }
+  - ps: Get-ChildItem .\app\dist\RELEASES | % { Push-AppveyorArtifact $_.FullName -FileName "$($_.Name)" }
+
+environment:
+  matrix:
+  - NODE_VERSION: '11'
+  global:
+    SIGN_BUILD: false
+
+cache:
+  - node_modules -> package.json
+  - app\node_modules -> app\package.json
