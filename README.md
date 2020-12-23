@@ -1,6 +1,7 @@
 # 💌 Mailspring Libre
 
-[![Travis Status](https://img.shields.io/travis/com/notpushkin/Mailspring-Libre?label=travis)](https://travis-ci.com/notpushkin/Mailspring-Libre)
+[![Linux & macOS build status](https://img.shields.io/travis/com/notpushkin/Mailspring-Libre?label=linux%20%26%20macos)](https://travis-ci.com/notpushkin/Mailspring-Libre)
+[![Windows build status](https://img.shields.io/appveyor/build/notpushkin/Mailspring-Libre/master?label=windows)](https://ci.appveyor.com/project/notpushkin/mailspring-libre)
 
 Mailspring is a email client that is fast, free and beautiful. This Libre build comes with no telemetry at all, and is still filled with powerful features you will love, like Unified Inbox, Snooze, Send Later, Mail Rules, Templates and more!
 
