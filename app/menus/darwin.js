@@ -128,6 +128,7 @@ module.exports = {
         { label: localized('Go to %@', localized('Starred')), command: 'navigation:go-to-starred' },
         { label: localized('Go to %@', localized('Sent Mail')), command: 'navigation:go-to-sent' },
         { label: localized('Go to %@', localized('Drafts')), command: 'navigation:go-to-drafts' },
+        { label: localized('Go to %@', localized('Trash')), command: 'navigation:go-to-trash' },
         { label: localized('Go to %@', localized('All Mail')), command: 'navigation:go-to-all' },
         { type: 'separator' },
         { label: localized('Enter Full Screen'), command: 'window:toggle-full-screen' },

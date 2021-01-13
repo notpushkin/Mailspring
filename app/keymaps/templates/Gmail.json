@@ -7,6 +7,7 @@
   "navigation:go-to-contacts": "g c",
   "navigation:go-to-tasks": "g k",
   "navigation:go-to-label": "g l",
+  "navigation:go-to-trash": "g x",
 
   "multiselect-list:select-all": "* a",
   "multiselect-list:deselect-all": "* n",
