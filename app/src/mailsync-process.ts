@@ -156,7 +156,7 @@ export class MailsyncProcess extends EventEmitter {
     // attached yet, but will be by the caller of spawnProcess.
     if (this.account && this._proc.stdout) {
       this._proc.stdout.once('data', () => {
-        var rs = new Readable();
+        const rs = new Readable();
         rs.push(`${JSON.stringify(this.account)}\n${JSON.stringify(this.identity)}\n`);
         rs.push(null);
         rs.pipe(
