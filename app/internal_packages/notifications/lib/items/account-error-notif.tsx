@@ -34,7 +34,7 @@ export default class AccountErrorNotification extends React.Component<
   }
 
   _onContactSupport = erroredAccount => {
-    let url = 'https://github.com/notpushkin/Mailspring-Libre/issues/new';
+    const url = 'https://github.com/notpushkin/Mailspring-Libre/issues/new';
     shell.openExternal(url);
   };
 

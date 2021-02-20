@@ -28,7 +28,7 @@ export const PermanentErrorCodes = [
 export const CanceledErrorCodes = [-123, 'ECONNABORTED'];
 export const SampleTemporaryErrorCode = 504;
 
-let IdentityStore = null;
+const IdentityStore = null;
 
 // server option
 

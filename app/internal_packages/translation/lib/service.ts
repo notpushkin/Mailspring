@@ -233,7 +233,7 @@ export async function translateMessageBody(
   if (translationDoc.childElementCount > 0) {
     const translationHTML = translationDoc.innerHTML.replace(/&nbsp;/g, ' '); // nbsp char
 
-    let response = null;
+    const response = null;
     try {
       throw new Error('Not supported in this build :(');
     } catch (error) {
