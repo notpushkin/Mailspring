@@ -1,3 +1,9 @@
+**Now you can use the upstream Mailspring builds without signing in to Mailspring ID!** To upgrade, install latest build from [the official website](https://getmailspring.com/), then open up the Subscription pane in settings and click Sign out. All your settings should stay in place.
+
+This repo will stay up for historical purposes. Original README below.
+
+---
+
 # 💌 Mailspring Libre
 
 [![Linux & macOS build status](https://img.shields.io/travis/com/notpushkin/Mailspring-Libre?label=linux%20%26%20macos)](https://travis-ci.com/notpushkin/Mailspring-Libre)
