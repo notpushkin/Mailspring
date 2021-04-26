@@ -81,6 +81,7 @@ export default [
       ['navigation:go-to-starred', localized('Go to %@', localized('Starred'))],
       ['navigation:go-to-sent', localized('Go to %@', localized('Sent Mail'))],
       ['navigation:go-to-drafts', localized('Go to %@', localized('Drafts'))],
+      ['navigation:go-to-trash', localized('Go to %@', localized('Trash'))],
       ['navigation:go-to-all', localized('Go to %@', localized('All Mail'))],
     ],
   },

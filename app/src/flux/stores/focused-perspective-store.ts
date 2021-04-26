@@ -50,6 +50,7 @@ class FocusedPerspectiveStore extends MailspringStore {
         const categories = this._current.accountIds.map(id => CategoryStore.getArchiveCategory(id));
         this._setPerspective(MailboxPerspective.forCategories(categories));
       },
+      'navigation:go-to-trash': () => this._setPerspectiveByName('trash'),
       'navigation:go-to-contacts': () => {}, // TODO,
       'navigation:go-to-tasks': () => {}, // TODO,
       'navigation:go-to-label': () => {}, // TODO,
